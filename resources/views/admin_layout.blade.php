@@ -7,7 +7,7 @@
 
     <!-- start: Meta -->
     <meta charset="utf-8">
-    <title>Metro Admin Template - Metro UI Style Bootstrap Admin Template</title>
+    <title>LMS-Admin Panel</title>
     <meta name="description" content="Metro Admin Template.">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword"
@@ -59,7 +59,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="index.html"><span>Metro</span></a>
+                <a class="brand" href="index.html"><span>Learning Management System</span></a>
 
                 <!-- start: Header Menu -->
                 <div class="nav-no-collapse header-nav">
@@ -313,7 +313,7 @@
                         <!-- start: User Dropdown -->
                         <li class="dropdown">
                             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="halflings-icon white user"></i> Łukasz Holeczek
+                                <i class="halflings-icon white user"></i> Admin
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
@@ -341,11 +341,12 @@
             <div id="sidebar-left" class="span2">
                 <div class="nav-collapse sidebar-nav">
                     <ul class="nav nav-tabs nav-stacked main-menu">
-                        <li><a href="index.html"><i class="icon-bar-chart"></i><span class="hidden-tablet">
-                                    Dashboard</span></a></li>
-                        <li><a href="messages.html"><i class="icon-envelope"></i><span class="hidden-tablet">
-                                    Messages</span></a></li>
-                        <li><a href="tasks.html"><i class="icon-tasks"></i><span class="hidden-tablet"> Tasks</span></a>
+                        <li><a href="/admin/users"><i class="icon-user"></i><span class="hidden-tablet">
+                                    Users</span></a></li>
+                        <li><a href="/admin/teachers"><i class="icon-book"></i><span class="hidden-tablet">
+                                    Teachers</span></a></li>
+                        <li><a href="/admin/students"><i class="icon-group "></i><span class="hidden-tablet">
+                                     Students</span></a>
                         </li>
                         <li><a href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet"> UI
                                     Features</span></a></li>
