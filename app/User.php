@@ -36,4 +36,50 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function isAdmin() {
+        
+        $role = 'N/A';
+
+        if($this->role) 
+            $role = $this->role->name;
+
+        if($role == 'Admin') 
+            return true;
+        else 
+            return false;
+    }
+
+    public function isTeacher() {
+        
+        $role = 'N/A';
+
+        if($this->role) 
+            $role = $this->role->name;
+
+        if($role == 'Teacher') 
+            return true;
+        else 
+            return false;
+    }
+
+    public function isStudent() {
+        
+        $role = 'N/A';
+
+        if($this->role) 
+            $role = $this->role->name;
+
+        if($role == 'Student') 
+            return true;
+        else 
+            return false;
+    }
+
 }
