@@ -8,8 +8,8 @@ class AdminController extends Controller
 {
     //
 
-    public function test() {
-        return 'you are Admin';
+    public function dashboard() {
+        return view('admin.dashboard');
     }
 
     public function teacher() {

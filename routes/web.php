@@ -19,6 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin', 'AdminController@test')->middleware('isAdmin');
+Route::get('/admin', 'AdminController@dashboard')->middleware('isAdmin');
 Route::get('/teacher', 'AdminController@teacher')->middleware('isTeacher');
 Route::get('/student', 'AdminController@student')->middleware('isStudent');
