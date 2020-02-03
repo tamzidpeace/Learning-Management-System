@@ -59,7 +59,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="index.html"><span>Learning Management System</span></a>
+                <a class="brand" href="/home"><span>Learning Management System</span></a>
 
                 <!-- start: Header Menu -->
                 <div class="nav-no-collapse header-nav">

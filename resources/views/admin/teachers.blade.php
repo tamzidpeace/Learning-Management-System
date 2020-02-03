@@ -8,7 +8,6 @@
     <tr class="info">
         <th>#</th>
         <th>Name</th>
-        <th>Role</th>
         <th>Email</th>
         <th>Joined</th>
     </tr>
@@ -21,7 +20,6 @@
     <tr>
         <td> {{$count++}} </td>
         <td> {{$teacher->name}} </td>
-        <td> {{$teacher->role->name}} </td>
         <td> {{$teacher->email}} </td>
         <td> {{$teacher->created_at}} </td>
         
