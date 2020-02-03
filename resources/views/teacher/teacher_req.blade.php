@@ -18,7 +18,7 @@
 
                 <div class="form-group">
                     {!! Form::label('about', 'About Yourself') !!}
-                    {!! Form::textarea('about' , null, ['class' => 'form-control', 'row'=>'4']) !!}
+                    {!! Form::textarea('about' , null, ['class' => 'form-control', 'rows'=>'4']) !!}
                 </div>
 
                 

@@ -62,6 +62,25 @@
                                         {{ __('Logout') }}
                                     </a>
 
+                                    @php
+                                        $id = Auth::user()->role_id;
+                                        $name = Auth::user()->name;
+                                    @endphp
+
+                                    @if ($id == 1)
+                                    <a class="dropdown-item" href="/student-profile">Profile</a>
+                                    @endif
+
+                                    @if ($id == 2)
+                                    <a class="dropdown-item" href="/teacher-profile">Profile</a>
+                                    @endif
+
+                                    
+                                    @if ($id == 3)
+                                    <a class="dropdown-item" href="/admin">Dashboard</a>
+                                    @endif
+                                    
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>

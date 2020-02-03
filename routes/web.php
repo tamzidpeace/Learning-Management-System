@@ -33,10 +33,17 @@ Route::get('/student', 'AdminController@student')->middleware('isStudent');
 
 // end of admin routes
 
-// start of teacher routes
+// start of student routes
 
 Route::get('/lms/be_a_teacher', 'TeacherController@beTeacher')->middleware('isStudent');
 Route::post('/lms/be_a_teacher/confirm', 'TeacherController@request')->middleware('isStudent');
+Route::get('/student-profile', 'StudentController@profile')->middleware('isStudent');
+Route::Post('/student-profile/edit', 'StudentController@profileEdit')->middleware('isStudent');
 
 
-//end of teacher routes
+//end of student routes
+
+// teacher controller
+
+Route::get('/teacher-profile', 'TeacherController@profile')->middleware('isTeacher');
+Route::Post('/teacher-profile/edit', 'TeacherController@profileEdit')->middleware('isTeacher');
