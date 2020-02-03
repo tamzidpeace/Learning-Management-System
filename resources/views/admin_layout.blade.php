@@ -20,9 +20,9 @@
 
     <!-- start: CSS -->
     <link id="bootstrap-style" href="{{asset('dashboard/css/bootstrap.min.css')}}" rel="stylesheet">
-	<link href="{{asset('dashboard/css/bootstrap-responsive.min.css')}}" rel="stylesheet">
-	<link id="base-style" href="{{asset('dashboard/css/style.css')}}" rel="stylesheet">
-	<link id="base-style-responsive" href="{{asset('dashboard/css/style-responsive.css')}}" rel="stylesheet">
+    <link href="{{asset('dashboard/css/bootstrap-responsive.min.css')}}" rel="stylesheet">
+    <link id="base-style" href="{{asset('dashboard/css/style.css')}}" rel="stylesheet">
+    <link id="base-style-responsive" href="{{asset('dashboard/css/style-responsive.css')}}" rel="stylesheet">
     <link
         href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;subset=latin,cyrillic-ext,latin-ext'
         rel='stylesheet' type='text/css'>
@@ -343,10 +343,24 @@
                     <ul class="nav nav-tabs nav-stacked main-menu">
                         <li><a href="/admin/users"><i class="icon-user"></i><span class="hidden-tablet">
                                     Users</span></a></li>
+
+
+                        <li>
+                            <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span
+                                    class="hidden-tablet">Teacher</span></a>
+                            <ul>
+                                <li><a href="/admin/teachers"><i class="icon-book"></i><span class="hidden-tablet">
+                                            All Teachers</span></a></li>
+                                <li><a class="submenu" href="/admin/teacher-req"><i class="icon-file-alt"></i><span
+                                            class="hidden-tablet">Teacher Request</span></a></li>
+                            </ul>
+                        </li>
+
+
                         <li><a href="/admin/teachers"><i class="icon-book"></i><span class="hidden-tablet">
                                     Teachers</span></a></li>
                         <li><a href="/admin/students"><i class="icon-group "></i><span class="hidden-tablet">
-                                     Students</span></a>
+                                    Students</span></a>
                         </li>
                         <li><a href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet"> UI
                                     Features</span></a></li>
@@ -427,6 +441,8 @@
 
     <div class="clearfix"></div>
 
+    @include('includes.flash')
+
     <footer>
 
         <p>
@@ -466,7 +482,7 @@
     <script src="{{asset('dashboard/js/jquery.chosen.min.js')}}"></script>
 
     <script src="{{asset('dashboard/js/jquery.uniform.min.js')}}"></script>
-    
+
     <script src="{{asset('dashboard/js/jquery.cleditor.min.js')}}"></script>
 
     <script src="{{asset('dashboard/js/jquery.noty.js')}}"></script>

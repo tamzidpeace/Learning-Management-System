@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Users</h1>
+<h1>Teachers</h1>
 
 <table class="table table-bordered">
     <tr class="info">

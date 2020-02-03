@@ -24,6 +24,7 @@ class TeacherController extends Controller
 
         $teacher = new Teacher();
 
+        $teacher->user_id = $user->id;
         $teacher->name = $user->name;
         $teacher->email = $user->email;
         $teacher->expert = $request->expert;

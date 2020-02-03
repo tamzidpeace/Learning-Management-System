@@ -23,6 +23,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'AdminController@dashboard')->middleware('isAdmin');
 Route::get('/admin/users', 'AdminController@users')->middleware('isAdmin');
 Route::get('/admin/teachers', 'AdminController@teachers')->middleware('isAdmin');
+Route::get('/admin/teacher-req', 'AdminController@teacherReq')->middleware('isAdmin');
+Route::patch('/admin/teacher-req/{id}', 'AdminController@accept')->middleware('isAdmin');
+Route::delete('/admin/teacher-req/{id}', 'AdminController@reject')->middleware('isAdmin');
 Route::get('/admin/students', 'AdminController@students')->middleware('isAdmin');
 
 Route::get('/teacher', 'AdminController@teacher')->middleware('isTeacher');
