@@ -8,6 +8,7 @@ use App\User;
 use App\Teacher;
 use App\Tutorial;
 use App\Category;
+use App\Video;
 
 class TeacherController extends Controller
 {
@@ -87,7 +88,7 @@ class TeacherController extends Controller
         $tutorial->category_id = $request->category;
         $tutorial->title = $request->title;
         $tutorial->cover_image =  $cover_image_name;
-        $tutorial->link = 'image/tutorial' . $cover_image_name;
+        $tutorial->link = '/image/tutorial/' . $cover_image_name;
         $tutorial->description = $request->desc;
 
         $tutorial->save();
@@ -103,5 +104,40 @@ class TeacherController extends Controller
         $tutorial->save();
 
         return redirect()->back()->with('info', 'tutorial submitted for publication');
+    }
+
+    public function details($id) {
+
+        $tutorial = Tutorial::findOrFail($id);
+        $videos = Video::where('tutorial_id', $id)->paginate(5);
+
+        return view('teacher.tutorial_details', compact('tutorial', 'videos'));
+    }
+
+    public function uploadVideo($id) {
+        $tutorial = Tutorial::findOrFail($id);
+
+        return view('teacher.upload_video', compact('tutorial'));
+    }
+
+    public function upload(Request $request, $id) {
+        
+        
+        
+        $file = $request->file('video');
+        $video_name = time() . '_' . $file->getClientOriginalName();
+        $file->move('video/tutorial', $video_name);
+        $link = '/video/tutorial/' . $video_name;
+
+        $video = new Video;
+
+        $video->tutorial_id = $id;
+        $video->name = $request->name;
+        $video->video = $video_name;
+        $video->link = $link;
+
+        $video->save();
+
+        return redirect('/teacher/tutorials/details/' . $id)->with('success', 'video uploaded');
     }
 }

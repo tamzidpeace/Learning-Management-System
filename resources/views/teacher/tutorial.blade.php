@@ -35,7 +35,7 @@
                         <tr>
                             <td> {{$count++}} </td>
                             <td> 
-                                <a href="#">{{$tu->title}}</a>
+                            <a href="/teacher/tutorials/details/{{$tu->id}} ">{{  $tu->title    }}</a>
                              </td>
                             <td> {{$tu->description  }} </td>
                             <td> {{ $tu->status }} </td>

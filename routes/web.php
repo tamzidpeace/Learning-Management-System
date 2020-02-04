@@ -54,3 +54,7 @@ Route::get('/teacher-tutorial/create-new', 'TeacherController@createNewTutorial'
 Route::post('/teacher-tutorial/upload-video', 'TeacherController@save')->middleware('isTeacher');
 Route::patch('/teacher-tutorial/upload-video/publish/{id}', 
                 'TeacherController@publish')->middleware('isTeacher');
+
+Route::get('/teacher/tutorials/details/{id}', 'TeacherController@details')->middleware('isTeacher');
+Route::get('/teacher-tutorial/upload-video/{id}', 'TeacherController@uploadVideo')->middleware('isTeacher');
+Route::post('/teacher-tutorial/upload-video/{id}', 'TeacherController@upload')->middleware('isTeacher');

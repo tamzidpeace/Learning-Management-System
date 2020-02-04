@@ -40,6 +40,7 @@ return array(
     'App\\Teacher' => $baseDir . '/app/Teacher.php',
     'App\\Tutorial' => $baseDir . '/app/Tutorial.php',
     'App\\User' => $baseDir . '/app/User.php',
+    'App\\Video' => $baseDir . '/app/Video.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
     'Carbon\\CarbonImmutable' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonImmutable.php',
     'Carbon\\CarbonInterface' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonInterface.php',
