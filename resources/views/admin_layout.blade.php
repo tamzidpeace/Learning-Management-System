@@ -362,6 +362,22 @@
                         <li><a href="/admin/students"><i class="icon-group "></i><span class="hidden-tablet">
                                     Students</span></a>
                         </li>
+
+                        {{-- category --}}
+
+                        <li>
+                            <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span
+                                    class="hidden-tablet">Tutorial</span></a>
+                            <ul>
+                                <li><a href="/admin/category"><i class="icon-book"></i><span class="hidden-tablet">
+                                            Category</span></a></li>
+                                <li><a class="submenu" href="/admin/teacher-req"><i class="icon-file-alt"></i><span
+                                            class="hidden-tablet">Teacher Request</span></a></li>
+                            </ul>
+                        </li>
+
+                        {{-- end category --}}
+
                         <li><a href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet"> UI
                                     Features</span></a></li>
                         <li><a href="widgets.html"><i class="icon-dashboard"></i><span class="hidden-tablet">

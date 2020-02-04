@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     {{-- {{ config('app.name', 'LMS') }} --}}
                     LMS
                 </a>
@@ -73,6 +73,7 @@
 
                                     @if ($id == 2)
                                     <a class="dropdown-item" href="/teacher-profile">Profile</a>
+                                    <a class="dropdown-item" href="/teacher-tutorial">Tutorial</a>
                                     @endif
 
                                     

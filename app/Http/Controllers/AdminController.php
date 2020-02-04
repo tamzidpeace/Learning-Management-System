@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\user;
 use App\Teacher;
+use App\Category;
 
 class AdminController extends Controller
 {
@@ -58,5 +59,19 @@ class AdminController extends Controller
         $students = User::where('role_id', 1)->get();
         return view('admin.students', compact('students'));
         
+    }
+
+    public function category() {
+        $categories = Category::all();
+        return view('admin.category', compact('categories'));
+    }
+
+    public function addCategory(Request $request) {
+        
+        $cate = new Category;
+        $cate->name = $request->name;
+        $cate->save();
+
+        return redirect()->back()->with('info', 'category added!');
     }
 }

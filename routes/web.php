@@ -27,6 +27,8 @@ Route::get('/admin/teacher-req', 'AdminController@teacherReq')->middleware('isAd
 Route::patch('/admin/teacher-req/{id}', 'AdminController@accept')->middleware('isAdmin');
 Route::delete('/admin/teacher-req/{id}', 'AdminController@reject')->middleware('isAdmin');
 Route::get('/admin/students', 'AdminController@students')->middleware('isAdmin');
+Route::get('/admin/category', 'AdminController@category')->middleware('isAdmin');
+Route::post('/admin/category', 'AdminController@addCategory')->middleware('isAdmin');
 
 Route::get('/teacher', 'AdminController@teacher')->middleware('isTeacher');
 Route::get('/student', 'AdminController@student')->middleware('isStudent');
@@ -47,3 +49,8 @@ Route::Post('/student-profile/edit', 'StudentController@profileEdit')->middlewar
 
 Route::get('/teacher-profile', 'TeacherController@profile')->middleware('isTeacher');
 Route::Post('/teacher-profile/edit', 'TeacherController@profileEdit')->middleware('isTeacher');
+Route::get('/teacher-tutorial', 'TeacherController@tutorial')->middleware('isTeacher');
+Route::get('/teacher-tutorial/create-new', 'TeacherController@createNewTutorial')->middleware('isTeacher');
+Route::post('/teacher-tutorial/upload-video', 'TeacherController@save')->middleware('isTeacher');
+Route::patch('/teacher-tutorial/upload-video/publish/{id}', 
+                'TeacherController@publish')->middleware('isTeacher');
