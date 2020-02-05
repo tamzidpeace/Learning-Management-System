@@ -138,6 +138,9 @@ class TeacherController extends Controller
 
         $video->save();
 
-        return redirect('/teacher/tutorials/details/' . $id)->with('success', 'video uploaded');
+        if(Auth::user()->role_id == 2)
+            return redirect('/teacher/tutorials/details/' . $id)->with('success', 'video uploaded');
+        else
+            return redirect('/admin/tutorial/details/' . $id)->with('success', 'video uploaded');
     }
 }

@@ -30,6 +30,11 @@ Route::get('/admin/students', 'AdminController@students')->middleware('isAdmin')
 Route::get('/admin/category', 'AdminController@category')->middleware('isAdmin');
 Route::post('/admin/category', 'AdminController@addCategory')->middleware('isAdmin');
 
+//tutorial
+Route::get('/admin/tutorial/pending', 'AdminController@pendingTutorials')->middleware('isAdmin');
+Route::get('/admin/tutorial/details/{id}', 'AdminController@tutorialDetails')->middleware('isAdmin');
+Route::patch('/admin/tutorial/details/publish/{id}', 'AdminController@publish')->middleware('isAdmin');
+
 Route::get('/teacher', 'AdminController@teacher')->middleware('isTeacher');
 Route::get('/student', 'AdminController@student')->middleware('isStudent');
 
@@ -52,9 +57,17 @@ Route::Post('/teacher-profile/edit', 'TeacherController@profileEdit')->middlewar
 Route::get('/teacher-tutorial', 'TeacherController@tutorial')->middleware('isTeacher');
 Route::get('/teacher-tutorial/create-new', 'TeacherController@createNewTutorial')->middleware('isTeacher');
 Route::post('/teacher-tutorial/upload-video', 'TeacherController@save')->middleware('isTeacher');
-Route::patch('/teacher-tutorial/upload-video/publish/{id}', 
-                'TeacherController@publish')->middleware('isTeacher');
+Route::patch(
+    '/teacher-tutorial/upload-video/publish/{id}',
+    'TeacherController@publish'
+)->middleware('isTeacher');
 
 Route::get('/teacher/tutorials/details/{id}', 'TeacherController@details')->middleware('isTeacher');
-Route::get('/teacher-tutorial/upload-video/{id}', 'TeacherController@uploadVideo')->middleware('isTeacher');
-Route::post('/teacher-tutorial/upload-video/{id}', 'TeacherController@upload')->middleware('isTeacher');
+
+Route::get('/teacher-tutorial/upload-video/{id}', 'TeacherController@uploadVideo');
+Route::post('/teacher-tutorial/upload-video/{id}', 'TeacherController@upload');
+
+// test
+
+Route::get('/test', 'StudentController@test');
+Route::get('/test2', 'StudentController@test2');

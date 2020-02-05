@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\user;
 use App\Teacher;
 use App\Category;
+use App\Tutorial;
+use App\Video;
 
 class AdminController extends Controller
 {
@@ -73,5 +75,28 @@ class AdminController extends Controller
         $cate->save();
 
         return redirect()->back()->with('info', 'category added!');
+    }
+
+    public function pendingTutorials() {
+
+        $pts = Tutorial::where('status', 'pending')->get();
+
+        return view('admin.pending_tutorial', compact('pts'));
+    }
+
+    public function tutorialDetails($id) {
+        $pt = Tutorial::findOrFail($id);
+        $videos = Video::where('tutorial_id', $id)->paginate(5);
+        return view('admin.tutorial_details', compact('pt', 'videos'));
+    }
+
+    public function publish($id)
+    {
+        $tutorial = Tutorial::findOrFail($id);
+        $tutorial->status = 'published';
+
+        $tutorial->save();
+
+        return redirect('/admin/tutorial/pending')->with('info', 'tutorial published');
     }
 }

@@ -20,4 +20,13 @@ class StudentController extends Controller
 
         return redirect('/home')->with('success', 'Your profile updated');
     }
+
+    public function test() {
+        return view('test');
+    }
+
+    public function test2(Request $request) {
+        $present = $request->get('present');
+        dd($present);
+    }
 }

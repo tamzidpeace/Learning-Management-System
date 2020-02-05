@@ -1,8 +1,9 @@
-@extends('layouts.app')
+@extends('admin_layout')
+
 
 @section('content')
 
-<div class="container">
+<div style="margin-left:30px; margin-top:30px;" class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
@@ -10,15 +11,15 @@
                 <div class="card-header">
                     <p style="margin-top:0px;" align='right'>
 
-                        <a href="/teacher-tutorial/upload-video/{{ $tutorial->id }}" type="button"
+                        <a href="/teacher-tutorial/upload-video/{{ $pt->id }}" type="button"
                             class="btn btn-primary">
                             Upload New Video
                         </a>
                     </p>
-                    <img style="margin-top:-70px;" src="{{$tutorial->link}}" alt="" class="img-thumbnail img-responsive"
+                    <img style="margin-top:-70px;" src="{{$pt->link}}" alt="" class="img-thumbnail img-responsive"
                         height="200" width="200">
-                    <p style="margin-top:10px;">{{ $tutorial->title }}</p>
-                    <p><small> {{ $tutorial->description }} </small></p>
+                    <p style="margin-top:10px;">{{ $pt->title }}</p>
+                    <p><small> {{ $pt->description }} </small></p>
 
                 </div>
                 {{-- body  --}}
@@ -48,11 +49,7 @@
                                     <source src="{{ $video->link }}">
                                 </video>
                             </td>
-                            {{-- <td>
-                                {!! Form::open(['method' => 'POST', 'action' => ['TeacherController@upload', $tutorial->id]]) !!}
-                                <input type="checkbox" name="checked[]" value="{{ $tutorial->id }}">
-                                {!! Form::close() !!}
-                            </td> --}}
+                            
                         </tr>
                         @endforeach
 
@@ -60,10 +57,10 @@
 
                     {{ $videos->links() }}
 
-                    @if ($tutorial->status == 'created')
+                    @if ($pt->status == 'pending')
                     <p align='right'>
 
-                        {!! Form::open(['method' => 'patch', 'action' => ['TeacherController@publish', $tutorial->id],
+                        {!! Form::open(['method' => 'patch', 'action' => ['AdminController@publish', $pt->id],
                         'files'=> true]) !!}
 
                         <div class="form-group">
@@ -84,4 +81,7 @@
 </div>
 
 
+
+
+    
 @endsection
