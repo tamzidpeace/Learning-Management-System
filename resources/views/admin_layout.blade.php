@@ -357,8 +357,7 @@
                         </li>
 
 
-                        <li><a href="/admin/teachers"><i class="icon-book"></i><span class="hidden-tablet">
-                                    Teachers</span></a></li>
+                        
                         <li><a href="/admin/students"><i class="icon-group "></i><span class="hidden-tablet">
                                     Students</span></a>
                         </li>

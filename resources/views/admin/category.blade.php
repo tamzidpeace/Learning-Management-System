@@ -5,8 +5,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="card">
-                <div class="card-header">Category</div>
+            <div style="margin-left:20px;" class="card">
+                <div class="card-header"></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -21,7 +21,7 @@
 
                     {!! Form::open(['method' => 'POST', 'action' => 'AdminController@addCategory', 'files'=> true]) !!}
 
-                    <div class="form-group">
+                    <div style="margin-top:15px;"class="form-group">
                         {!! Form::label('name', 'Category') !!}
                         {!! Form::text('name', null, ['class' => 'form-control']) !!}
                     </div>
