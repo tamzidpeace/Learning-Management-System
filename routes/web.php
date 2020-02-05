@@ -76,6 +76,7 @@ Route::post('/teacher-tutorial/upload-video/{id}', 'TeacherController@upload');
 Route::get('/home/tutorial/details/{id}', 'HomeController@tutorialDetails');
 Route::get('/home/tutorial/purchase/{id}', 'HomeController@purchase');
 Route::post('/home/tutorial/purchaseNenrole', 'HomeController@purchaseNenrole');
+Route::get('/home/enrole-tutorial', 'HomeController@enroleTutorial');
 
 
 // 

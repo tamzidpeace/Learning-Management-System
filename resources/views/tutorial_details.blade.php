@@ -15,7 +15,7 @@
                             Buy Now
                         </a>
                         @endif
-                        @if ($enrole || $owner)
+                        @if ($enrole)
                         <a href="#" type="button" class="btn btn-success">
                             Enroled
                         </a>

@@ -17,6 +17,7 @@ class CreateEnrolesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->integer('tutorial_id');
+            $table->unique(['user_id', 'tutorial_id']);
             $table->timestamps();
         });
     }
