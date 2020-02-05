@@ -19,6 +19,7 @@
                         height="200" width="200">
                     <p style="margin-top:10px;">{{ $pt->title }}</p>
                     <p><small> {{ $pt->description }} </small></p>
+                    <p><a href="/admin/tutorial/enroled-students/{{ $pt->id }}" class="btn btn-info">Enroled Students</a></p>
 
                 </div>
                 {{-- body  --}}

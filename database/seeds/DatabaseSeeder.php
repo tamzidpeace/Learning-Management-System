@@ -23,5 +23,8 @@ class DatabaseSeeder extends Seeder
 
         DB::table('roles')->insert([['name' => 'Student'], 
         ['name' => 'Teacher'], ['name' => 'Admin'],]);
+
+        DB::table('categories')->insert([['name' => 'category 1'], 
+        ['name' => 'category 2'], ['name' => 'category 3'],]);
     }
 }

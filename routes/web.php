@@ -38,6 +38,8 @@ Route::get('/admin/tutorial/published', 'AdminController@publishedTutorials')->m
 Route::delete('/admin/tutorial/delete/{id}', 'AdminController@deleteVideo')->middleware('isAdmin');
 Route::get('/admin/tutorial/all', 'AdminController@allTutorials')->middleware('isAdmin');
 Route::delete('/admin/tutorial/all/delete/{id}', 'AdminController@deleteTutorial')->middleware('isAdmin');
+Route::get('/admin/tutorial/enroled-students/{id}', 'AdminController@enrolledStudents')->middleware('isAdmin');
+Route::post('/admin/tutorial/enroled-students/assign', 'AdminController@assignTutorial');
 
 Route::get('/teacher', 'AdminController@teacher')->middleware('isTeacher');
 Route::get('/student', 'AdminController@student')->middleware('isStudent');
