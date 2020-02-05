@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('users')->insert([
             ['role_id' => '3', 'name' => 'admin', 'email' => 'admin@lms.com', 'password' => bcrypt('11111111'), 'remember_token' =>  Str::random(10),],
-            ['role_id' => '1', 'name' => 'student', 'email' => 'student@lms.com', 'password' => bcrypt('111111'), 'remember_token' =>  Str::random(10),],
-            ['role_id' => '2', 'name' => 'teacher', 'email' => 'teacher@lms.com', 'password' => bcrypt('111111'), 'remember_token' =>  Str::random(10),],
+            ['role_id' => '1', 'name' => 'student', 'email' => 'student@lms.com', 'password' => bcrypt('11111111'), 'remember_token' =>  Str::random(10),],
+            ['role_id' => '2', 'name' => 'teacher', 'email' => 'teacher@lms.com', 'password' => bcrypt('11111111'), 'remember_token' =>  Str::random(10),],
         ]);
 
         DB::table('roles')->insert([['name' => 'Student'], 

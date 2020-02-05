@@ -73,14 +73,14 @@ class HomeController extends Controller
 
     public function enroleTutorial() {
         $enroles = Enrole::select('tutorial_id')->where('user_id', Auth::user()->id)->get();
-
-        $tutorials = new Tutorial;
-        $i = 0;
-        foreach ($enroles as $enrole) {
-           // $tutorials[$i++] = Tutorial::find($enrole->tutorial_id);
-           $tutorials = Tutorial::all();
-            //$tutorials[$i++] = Tutorial::where('id', $enrole->tutorial_id)->get();
+        $i=0;
+        foreach($enroles as $enrole) {
+            $value[$i++] = $enrole->tutorial_id;
         }
+
+       
+
+        $tutorials = Tutorial::find($value);
 
       //return gettype($tutorials);
        return view('enrole_tutorial', compact('tutorials', 'enroles'));
