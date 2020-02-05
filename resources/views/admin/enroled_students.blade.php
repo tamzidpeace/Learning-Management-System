@@ -4,6 +4,19 @@
 
 <h1>Enroled Students</h1>
 
+
+{!! Form::open(['method' => 'post', 'action' => ['AdminController@groupAssign'], 'files'=> true]) !!}
+
+{{ Form::hidden('students', $students) }}
+{{ Form::hidden('tutorial_id', $tutorial->id) }}
+
+<div class="form-group">
+    {!! Form::submit('Group Assignment', ['class' => 'btn btn-primary']) !!}
+</div>
+
+{!! Form::close() !!}
+
+
 <table class="table table-bordered">
     <tr class="info">
         <th>#</th>
@@ -22,7 +35,7 @@
         <td>
             {!! Form::open(['method' => 'post', 'action' => ['AdminController@assignTutorial'],
             'files'=> true]) !!}
-            
+
             {{ Form::hidden('user_id', $student->id) }}
             {{ Form::hidden('tutorial_id', $tutorial->id) }}
 

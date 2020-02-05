@@ -40,6 +40,8 @@ Route::get('/admin/tutorial/all', 'AdminController@allTutorials')->middleware('i
 Route::delete('/admin/tutorial/all/delete/{id}', 'AdminController@deleteTutorial')->middleware('isAdmin');
 Route::get('/admin/tutorial/enroled-students/{id}', 'AdminController@enrolledStudents')->middleware('isAdmin');
 Route::post('/admin/tutorial/enroled-students/assign', 'AdminController@assignTutorial');
+Route::post('/admin/tutorial/enroled-students/group-assign', 'AdminController@groupAssign');
+Route::post('/admin/tutorial/enroled-students/group-assign/save', 'AdminController@assignTutorialSave');
 
 Route::get('/teacher', 'AdminController@teacher')->middleware('isTeacher');
 Route::get('/student', 'AdminController@student')->middleware('isStudent');

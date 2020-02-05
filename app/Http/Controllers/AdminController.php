@@ -10,6 +10,7 @@ use App\Tutorial;
 use App\Video;
 use App\Enrole;
 use App\Assign;
+use DB;
 
 class AdminController extends Controller
 {
@@ -144,6 +145,8 @@ class AdminController extends Controller
 
         $i = 0;
 
+        $val = [];
+
         foreach ($enroles as $enrole) {
             $val[$i++] = $enrole->user_id;
         }
@@ -167,10 +170,55 @@ class AdminController extends Controller
         $check = Assign::where([['user_id', $request->user_id], ['tutorial_id', $request->tutorial_id]])->first();
 
         if ($check) {
-           return  redirect()->back()->with('warning', 'tutorial already assigned');
+            return  redirect()->back()->with('warning', 'tutorial already assigned');
         } else {
             $assign->save();
             return redirect()->back()->with('success', 'tutorial assigned');
         }
+    }
+
+    public function groupAssign(Request $request)
+    {
+        $id = $request->tutorial_id;
+        $enroles = Enrole::where('tutorial_id', $id)->get();
+        $tutorial = Tutorial::find($id);
+
+        $i = 0;
+
+        $val = [];
+
+        foreach ($enroles as $enrole) {
+            $val[$i++] = $enrole->user_id;
+        }
+
+        $students = User::find($val);
+        
+        return view('admin.group_assign', compact('request', 'students', 'id'));
+    }
+
+    public function assignTutorialSave(Request $request)
+    {
+        $users = $request->present;
+        $tutorial_id = $request->id;
+
+        $assign = new Assign;
+
+        // for ($i=0; $i<count($user); $i++) {
+  
+        //      $assign->user_id = $user[$i];
+        //      $assign->tutorial_id = $tutorial_id;
+        //      $assign->save();
+           
+        // }
+
+        foreach ($users as $user) {
+            $data[] = ['user_id'=> $user,
+                      'tutorial_id'=>$request->id];
+        }
+
+        DB::table('assigns')->insert($data);
+        
+
+        return redirect('/admin/tutorial/enroled-students/' . $request->id)->with('success', 'tutorial assigned');
     }
 }
