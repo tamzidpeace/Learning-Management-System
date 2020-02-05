@@ -99,4 +99,34 @@ class AdminController extends Controller
 
         return redirect('/admin/tutorial/pending')->with('info', 'tutorial published');
     }
+
+    public function publishedTutorials() {
+        $pts = Tutorial::where('status', 'published')->get();
+
+        return view('admin.published_tutorials', compact('pts'));
+    }
+
+    public function deleteVideo($id) {
+        
+        $video = Video::findOrFail($id);
+
+        $video->delete();
+
+        return redirect()->back()->with('info', 'deleted');
+    }
+
+    public function allTutorials() {
+        $tutorials = Tutorial::all();
+        return view('admin.all_tutorials', compact('tutorials'));
+    }
+
+    public function deleteTutorial($id) {
+
+        $tutorial = Tutorial::findOrFail($id);
+
+        $tutorial->delete();
+
+        return redirect()->back()->with('info', 'deleted');
+        
+    }
 }

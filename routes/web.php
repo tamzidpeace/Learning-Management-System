@@ -34,6 +34,10 @@ Route::post('/admin/category', 'AdminController@addCategory')->middleware('isAdm
 Route::get('/admin/tutorial/pending', 'AdminController@pendingTutorials')->middleware('isAdmin');
 Route::get('/admin/tutorial/details/{id}', 'AdminController@tutorialDetails')->middleware('isAdmin');
 Route::patch('/admin/tutorial/details/publish/{id}', 'AdminController@publish')->middleware('isAdmin');
+Route::get('/admin/tutorial/published', 'AdminController@publishedTutorials')->middleware('isAdmin');
+Route::delete('/admin/tutorial/delete/{id}', 'AdminController@deleteVideo')->middleware('isAdmin');
+Route::get('/admin/tutorial/all', 'AdminController@allTutorials')->middleware('isAdmin');
+Route::delete('/admin/tutorial/all/delete/{id}', 'AdminController@deleteTutorial')->middleware('isAdmin');
 
 Route::get('/teacher', 'AdminController@teacher')->middleware('isTeacher');
 Route::get('/student', 'AdminController@student')->middleware('isStudent');

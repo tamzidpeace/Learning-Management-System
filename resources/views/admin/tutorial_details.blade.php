@@ -11,8 +11,7 @@
                 <div class="card-header">
                     <p style="margin-top:0px;" align='right'>
 
-                        <a href="/teacher-tutorial/upload-video/{{ $pt->id }}" type="button"
-                            class="btn btn-primary">
+                        <a href="/teacher-tutorial/upload-video/{{ $pt->id }}" type="button" class="btn btn-primary">
                             Upload New Video
                         </a>
                     </p>
@@ -31,6 +30,7 @@
 
                             <th>Tutorial</th>
                             <th>Play</th>
+                            <th>Action</th>
                             {{-- <th>Check Box</th> --}}
 
                         </tr>
@@ -49,8 +49,22 @@
                                     <source src="{{ $video->link }}">
                                 </video>
                             </td>
-                            
+                            <td>
+                                {{-- <a href="/admin/tutorial/delete/{{ $video->id }}" class="btn btn-danger">Delete
+                                    Video</a> --}}
+
+                                {!! Form::open(['method' => 'delete', 'action' => ['AdminController@deleteVideo', $video->id],
+                                'files'=> true]) !!}
+
+                                <div class="form-group">
+                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                </div>
+
+                                {!! Form::close() !!}
+
+                            </td>
                         </tr>
+
                         @endforeach
 
                     </table>
@@ -83,5 +97,5 @@
 
 
 
-    
+
 @endsection

@@ -371,8 +371,14 @@
                             <ul>
                                 <li><a href="/admin/category"><i class="icon-book"></i><span class="hidden-tablet">
                                             Category</span></a></li>
+                                
+                                <li><a href="/admin/tutorial/all"><i class="icon-book"></i><span class="hidden-tablet">
+                                            All Tutorials</span></a></li>
                                 <li><a class="submenu" href="/admin/tutorial/pending"><i class="icon-file-alt"></i><span
                                             class="hidden-tablet">Pending Tutorials</span></a></li>
+                                <li><a class="submenu" href="/admin/tutorial/published"><i
+                                            class="icon-file-alt"></i><span class="hidden-tablet">Published
+                                            Tutorials</span></a></li>
                             </ul>
                         </li>
 
