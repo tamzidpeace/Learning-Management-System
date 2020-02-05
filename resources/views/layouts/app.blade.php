@@ -69,11 +69,13 @@
 
                                     @if ($id == 1)
                                     <a class="dropdown-item" href="/student-profile">Profile</a>
+                                    <a class="dropdown-item" href="/home/enrole-tutorial">Enroled Tutorial</a>
                                     @endif
 
                                     @if ($id == 2)
                                     <a class="dropdown-item" href="/teacher-profile">Profile</a>
                                     <a class="dropdown-item" href="/teacher-tutorial">Tutorial</a>
+                                    <a class="dropdown-item" href="/home/enrole-tutorial">Enroled Tutorial</a>
                                     @endif
 
                                     

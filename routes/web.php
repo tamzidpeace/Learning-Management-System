@@ -71,6 +71,15 @@ Route::get('/teacher/tutorials/details/{id}', 'TeacherController@details')->midd
 Route::get('/teacher-tutorial/upload-video/{id}', 'TeacherController@uploadVideo');
 Route::post('/teacher-tutorial/upload-video/{id}', 'TeacherController@upload');
 
+// web
+
+Route::get('/home/tutorial/details/{id}', 'HomeController@tutorialDetails');
+Route::get('/home/tutorial/purchase/{id}', 'HomeController@purchase');
+Route::post('/home/tutorial/purchaseNenrole', 'HomeController@purchaseNenrole');
+
+
+// 
+
 // test
 
 Route::get('/test', 'StudentController@test');
