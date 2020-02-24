@@ -27,9 +27,22 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('video', 'Video') !!}
+                        {!! Form::label('video', 'Video/File') !!}
                         {!! Form::file('video', null, ['class' => 'form-control']) !!}
                     </div>
+                    <p>or</p>
+                    <div class="form-group">
+                        {!! Form::label('video_link', 'Video Link') !!}
+                        {!! Form::text('video_link', null, ['class' => 'form-control']) !!}
+                    </div>
+
+                    
+
+                    <div class="form-group">
+                        {!! Form::label('section', 'Section') !!}
+                        {!! Form::select('section', ['' => 'Choice Option'] + $sections , ['class' => 'form-control',]) !!}
+                    </div>
+
 
                     <div class="form-group">
                         {!! Form::submit('Upload', ['class' => 'btn btn-success']) !!}

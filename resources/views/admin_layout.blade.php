@@ -351,8 +351,8 @@
                             <ul>
                                 <li><a href="/admin/teachers"><i class="icon-book"></i><span class="hidden-tablet">
                                             All Teachers</span></a></li>
-                                <li><a class="submenu" href="/admin/teacher-req"><i class="icon-file-alt"></i><span
-                                            class="hidden-tablet">Teacher Request</span></a></li>
+                                {{-- <li><a class="submenu" href="/admin/teacher-req"><i class="icon-file-alt"></i><span
+                                            class="hidden-tablet">Teacher Request</span></a></li> --}}
                             </ul>
                         </li>
 

@@ -9,6 +9,7 @@ use App\Teacher;
 use App\Tutorial;
 use App\Category;
 use App\Video;
+use App\Section;
 
 class TeacherController extends Controller
 {
@@ -32,10 +33,16 @@ class TeacherController extends Controller
         $teacher->email = $user->email;
         $teacher->expert = $request->expert;
         $teacher->about = $request->about;
+        $teacher->status = 'accepted';
+
+        $user->role_id = 2;
 
         $teacher->save();
 
-        return redirect('/home')->with('success', 'Your request has been submitted!');
+        $user->save();
+        
+
+        return redirect('/home')->with('success', 'Your are a Teacher now!');
     }
 
     public function profile()
@@ -106,41 +113,101 @@ class TeacherController extends Controller
         return redirect()->back()->with('info', 'tutorial submitted for publication');
     }
 
-    public function details($id) {
-
+    public function details($id)
+    {
         $tutorial = Tutorial::findOrFail($id);
-        $videos = Video::where('tutorial_id', $id)->paginate(5);
+        $videos = Video::where('tutorial_id', $id)->orderBy('section_id')->paginate(5);
+        $sections = Section::where('tutorial_id', $id)->orderBy('serial_no')->get();
 
-        return view('teacher.tutorial_details', compact('tutorial', 'videos'));
+        return view('teacher.tutorial_details', compact('tutorial', 'videos', 'sections'));
     }
 
-    public function uploadVideo($id) {
+    public function sections($id)
+    {
         $tutorial = Tutorial::findOrFail($id);
 
-        return view('teacher.upload_video', compact('tutorial'));
+        $sections = Section::where('tutorial_id', $id)->orderBy('serial_no')->get();
+
+        
+
+        return view('teacher.section', compact('tutorial', 'sections'));
     }
 
-    public function upload(Request $request, $id) {
-        
-        
-        
-        $file = $request->file('video');
-        $video_name = time() . '_' . $file->getClientOriginalName();
-        $file->move('video/tutorial', $video_name);
-        $link = '/video/tutorial/' . $video_name;
+    public function addSection(Request $request)
+    {
+        $name = $request->name;
+        $serial = $request->serial;
+        $tutorial_id = $request->tutorial_id;
+
+        $section = new Section;
+
+        $section->name = $name;
+        $section->serial_no = $serial;
+        $section->tutorial_id = $tutorial_id;
+
+        $section->save();
+
+        return redirect()->back()->with('success', 'New section added');
+    }
+
+    public function uploadVideo($id)
+    {
+        $tutorial = Tutorial::findOrFail($id);
+
+        $sections = Section::where('tutorial_id', $id)->pluck('name', 'id')->all();
+
+        // return $sections;
+
+        return view('teacher.upload_video', compact('tutorial', 'sections'));
+    }
+
+    public function upload(Request $request, $id)
+    {
+        if ($request->file('video')) {
+            $file = $request->file('video');
+
+            $ext = $file->getClientOriginalName();
+            $len = strlen($ext);
+            $extention = $ext[$len-4] . $ext[$len-3] . $ext[$len-2] . $ext[$len-1];
+
+            if ($extention == '.pdf' || $extention == '.txt') {
+                $video_name = 'file';
+                $file->move('file/tutorial', time() . '_' . $file->getClientOriginalName());
+                $link = '/file/tutorial/'.time(). '_' .$ext;
+            } else {
+                $video_name = time() . '_' . $file->getClientOriginalName();
+                $file->move('video/tutorial', $video_name);
+                $link = '/video/tutorial/' . $video_name;
+            }
+
+        } else {
+            $x = $request->video_link;
+            //https://www.youtube.com/watch?v=bkyjiXSx6WE&t=3s
+            $video_link = str_replace("watch?v=", "embed/", $x);
+            $video_name = 'yt';
+            $link = $video_link;
+        }
+
+         
 
         $video = new Video;
 
         $video->tutorial_id = $id;
+        $video->section_id = $request->section;
         $video->name = $request->name;
         $video->video = $video_name;
         $video->link = $link;
 
+        
+
+        
+
         $video->save();
 
-        if(Auth::user()->role_id == 2)
-            return redirect('/teacher/tutorials/details/' . $id)->with('success', 'video uploaded');
-        else
-            return redirect('/admin/tutorial/details/' . $id)->with('success', 'video uploaded');
+        if (Auth::user()->role_id == 2) {
+            return redirect('/teacher/tutorials/details/' . $id)->with('success', 'uploaded');
+        } else {
+            return redirect('/admin/tutorial/details/' . $id)->with('success', 'uploaded');
+        }
     }
 }

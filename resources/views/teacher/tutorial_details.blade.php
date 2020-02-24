@@ -12,49 +12,97 @@
 
                         <a href="/teacher-tutorial/upload-video/{{ $tutorial->id }}" type="button"
                             class="btn btn-primary">
-                            Upload New Video
+                            Upload
                         </a>
                     </p>
                     <img style="margin-top:-70px;" src="{{$tutorial->link}}" alt="" class="img-thumbnail img-responsive"
                         height="200" width="200">
                     <p style="margin-top:10px;">{{ $tutorial->title }}</p>
                     <p><small> {{ $tutorial->description }} </small></p>
+                    <a href="/tutorial/details/{{ $tutorial->id }}/sections" type="button"
+                        class="btn btn-primary">Sections</a>
 
                 </div>
                 {{-- body  --}}
                 <div class="card-body">
 
-                    <table class="table table-bordered">
-                        <tr class="info">
-                            <th>#</th>
-
-                            <th>Tutorial</th>
-                            <th>Play</th>
-                            {{-- <th>Check Box</th> --}}
-
-                        </tr>
+                    
 
                         @php
                         $count = 1;
                         @endphp
 
+                        
+
+                        @foreach ($sections as $section)
+                        <strong> <p>{{ $section->name }}</p> </strong>
+                        
+                        
+
                         @foreach ($videos as $video)
-                        <tr>
-                            <td> {{$count++}} </td>
-                            <td>{{$video->name}}</td>
+
+                        @if ($section->id == $video->section_id)
+
+                        <p>{{ $video->name }}</p>
+                        @if ($video->video == 'yt')
+                        <iframe width="250" height="100" src=" {{ $video->link }} ">
+                        </iframe>
+                        @elseif($video->video == 'file')
+                        
+                        <a href=" {{ $video->link }} ">{{ $video->name }} </a>
+                        
+                        @else
+                        <video width="250" height="100" controls>
+                            <source src="{{ $video->link }}">
+                        </video>
+                        @endif
+                            
+                        @endif
+                        
+                            
+
+                        @endforeach
+                            
+                        @endforeach
+                        
+                            
+
+                        
+
+                        
+                        
+                        {{-- @for ($i = 0; $i < 3; $i++)
+                         
+                            <p> sec </p>
+                          @foreach ($videos as $video) <tr>
+                            @if ( $video->section_id)
+                            <td> {{$count++}} </td> <td>{{$video->name}}</td>
 
                             <td>
+                                @if ($video->video == 'yt')
+                                <iframe width="250" height="100" src=" {{ $video->link }} ">
+                                </iframe>
+                                @else
                                 <video width="250" height="100" controls>
                                     <source src="{{ $video->link }}">
                                 </video>
+                                @endif
+
                             </td>
-                            {{-- <td>
-                                {!! Form::open(['method' => 'POST', 'action' => ['TeacherController@upload', $tutorial->id]]) !!}
-                                <input type="checkbox" name="checked[]" value="{{ $tutorial->id }}">
-                                {!! Form::close() !!}
-                            </td> --}}
-                        </tr>
-                        @endforeach
+
+                            <td> {{ $video->section_id }} </td>
+                            @endif
+
+                            </tr>
+
+                            @endforeach
+
+                            @endfor --}}
+
+
+
+
+
 
                     </table>
 

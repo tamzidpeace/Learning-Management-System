@@ -74,6 +74,8 @@ Route::get('/teacher/tutorials/details/{id}', 'TeacherController@details')->midd
 
 Route::get('/teacher-tutorial/upload-video/{id}', 'TeacherController@uploadVideo');
 Route::post('/teacher-tutorial/upload-video/{id}', 'TeacherController@upload');
+Route::get('/tutorial/details/{id}/sections', 'TeacherController@sections');
+Route::post('/tutorial/sections/add-section', 'TeacherController@addSection');
 
 // web
 
